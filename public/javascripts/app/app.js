@@ -142,6 +142,15 @@ function htmlAddPlayers(data){
       if(data.players[i].character === 'Easter Bunny'){
         $td.addClass('easterbunny').attr('data-name', data.players[i].name);
       }
+      if(data.players[i].character === 'Leprechaun'){
+        $td.addClass('leprechaun').attr('data-name', data.players[i].name);
+      }
+      if(data.players[i].character === 'Jack O Lantern'){
+        $td.addClass('pumpkin').attr('data-name', data.players[i].name);
+      }
+      if(data.players[i].character === 'Uncle Sam'){
+        $td.addClass('sam').attr('data-name', data.players[i].name);
+      }
     }
   }
 
