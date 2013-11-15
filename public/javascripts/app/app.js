@@ -138,13 +138,13 @@ function htmlAddPlayers(data){
       $health.css('width', data.players[i].health + '%');
       $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name).prepend($health);
     }
-    if(data.players[i].isZombie){
-      var $zombie = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
-      var $death = $('<div>').addClass('health');
-      $death.css('background-color', data.players[i].color);
-      $death.css('width', data.players[i].health + '%');
-      $zombie.addClass('zombie');
-    }
+    // if(data.players[i].isZombie){
+    //   var $zombie = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
+    //   var $death = $('<div>').addClass('health');
+    //   $death.css('background-color', data.players[i].color);
+    //   $death.css('width', data.players[i].health + '%');
+    //   $zombie.addClass('zombie');
+    // }
   }
   if(easterEggs.length){
     htmlAddPotions(easterEggs);
