@@ -198,15 +198,15 @@ function htmlAddEggs(easterEggs) {
   $('#board td').removeClass('potion');
   $('#board td').removeClass('attack');
   $('#board td').removeClass('quicksand');
-  $('#board td').removeClass('easter-egg');
+
   for(var i = 0; i < easterEggs.length; i++){
     var $td = $('#board td[data-x="' + easterEggs[i].x + '"][data-y="' + easterEggs[i].y + '"]');
     if (easterEggs[i].type === 'potion') {
-      $td.addClass('potion easter-egg');
+      $td.addClass('potion');
     }
 
       if (easterEggs[i].type === 'attack') {
-        $td.addClass('attack easter-egg');
+        $td.addClass('attack');
     }
 
         if (easterEggs[i].type === 'quicksand') {
