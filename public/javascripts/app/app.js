@@ -51,7 +51,7 @@ function keyupMove(e){
 function clickStart(){
   $('#board tr').remove();
   game = $('#worlds :selected').text();
-  character = $('#characters :selected').text();
+  var character = $('#characters :selected').text();
   player = getValue('#player');
   socket.emit('startgame', {game:game, player:player, character:character});
   htmlAddBoard();
@@ -73,7 +73,6 @@ function findPrey() {
 function findPotions() {
   var player = findPlayer();
   return _.filter(easterEggs, function(p) { return p.x === player.x && p.y === player.y});
-
 }
 
 // ------------------------------------------------------------------------ //
@@ -134,14 +133,25 @@ function htmlAddPlayers(data){
   for(var i = 0; i < data.players.length; i++){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
-      $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name);
+      if(data.players[i].character === 'Santa Claus'){
+        $td.addClass('santa').attr('data-name', data.players[i].name);
+      }
+      if(data.players[i].character === 'Cupid'){
+        $td.addClass('cupid').attr('data-name', data.players[i].name);
+      }
+      if(data.players[i].character === 'Easter Bunny'){
+        $td.addClass('easterbunny').attr('data-name', data.players[i].name);
       }
     }
-    var user = _.find(players, function(p){return p.name === player});
+  }
+
+  var user = _.find(players, function(p){return p.name === player});
+
   for(var x = 0; x < user.health; x++){
     var $health = $('<div>').addClass('health');
     $('#hp-status').append($health);
   }
+
     // if(data.players[i].isZombie){
     //   var $zombie = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
     //   var $death = $('<div>').addClass('health');
