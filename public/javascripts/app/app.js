@@ -51,7 +51,7 @@ function keyupMove(e){
 function clickStart(){
   $('#board tr').remove();
   game = $('#worlds :selected').text();
-  character = $('#characters :selected').text();
+  var character = $('#characters :selected').text();
   player = getValue('#player');
   socket.emit('startgame', {game:game, player:player, character:character});
   htmlAddBoard();
@@ -137,6 +137,9 @@ function htmlAddPlayers(data){
       }
       if(data.players[i].character === 'Cupid'){
         $td.addClass('cupid').attr('data-name', data.players[i].name);
+      }
+      if(data.players[i].character === 'Easter Bunny'){
+        $td.addClass('easterbunny').attr('data-name', data.players[i].name);
       }
     }
   }
