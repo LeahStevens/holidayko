@@ -110,6 +110,7 @@ function socketPlayerJoined(data){
 }
 
 function socketPlayerDrinkPotion(data){
+  console.log(data);
   players = data.players;
   $('#board tr').remove();
   htmlAddBoard();
