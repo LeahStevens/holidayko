@@ -130,14 +130,15 @@ function htmlAddBoard() {
 }
 
 function htmlAddPlayers(data){
-
+  debugger;
   for(var i = 0; i < data.players.length; i++){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
       $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name);
       }
     }
-  for(var x = 0; x < data.players[{name:player}].health; x++){
+    var user = _.find(players, function(p){return p.name === player});
+  for(var x = 0; x < user.health; x++){
     var $health = $('<div>').addClass('health');
     $('#hp-status').append($health);
   }
