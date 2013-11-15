@@ -95,7 +95,7 @@ function initializeSocketIO(){
 function socketConnected(data){
   console.log(data);
 }
-function socketEggssReady(data){
+function socketEggsReady(data){
   easterEggs = data.easterEggs;
   console.log(data);
   htmlAddEggs(easterEggs);
@@ -110,6 +110,7 @@ function socketPlayerJoined(data){
 }
 
 function socketPlayerDrinkPotion(data){
+  console.log(data);
   players = data.players;
   $('#board tr').remove();
   htmlAddBoard();
