@@ -5,7 +5,6 @@ $(document).ready(initialize);
 var socket;
 var game;
 var player;
-var color;
 var players;
 var easterEggs;
 
@@ -150,7 +149,7 @@ function htmlAddPlayers(data){
     //   $zombie.addClass('zombie');
     // }
   if(easterEggs.length){
-    htmlAddPotions(easterEggs);
+    htmlAddEggs(easterEggs);
   }
 }
 
