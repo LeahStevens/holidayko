@@ -170,14 +170,6 @@ $('#hp-status div').remove();
       if(data.players[i].character === 'Uncle Sam'){
         $td.addClass('sam').attr('data-name', data.players[i].name);
       }
-      if($td.hasClass('attack')){
-        var $div = $('<div>').addClass('attack').addClass('egg');
-        $('#easter-egg').append($div);
-      }
-      if($td.hasClass('potion')){
-        var $div = $('<div>').addClass('potion').addClass('egg');
-        $('#easter-egg').append($div);
-      }
     }
   }
 
@@ -206,14 +198,15 @@ function htmlAddEggs(easterEggs) {
   $('#board td').removeClass('potion');
   $('#board td').removeClass('attack');
   $('#board td').removeClass('quicksand');
+  $('#board td').removeClass('easter-egg');
   for(var i = 0; i < easterEggs.length; i++){
     var $td = $('#board td[data-x="' + easterEggs[i].x + '"][data-y="' + easterEggs[i].y + '"]');
     if (easterEggs[i].type === 'potion') {
-      $td.addClass('potion');
+      $td.addClass('potion easter-egg');
     }
 
       if (easterEggs[i].type === 'attack') {
-        $td.addClass('attack');
+        $td.addClass('attack easter-egg');
     }
 
         if (easterEggs[i].type === 'quicksand') {
