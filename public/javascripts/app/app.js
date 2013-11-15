@@ -91,25 +91,25 @@ function initializeSocketIO(){
 }
 
 function socketConnected(data){
-  console.log(data);
+  // console.log(data);
 }
 
 function socketEggsReady(data){
   easterEggs = data.easterEggs;
-  console.log(data);
+  // console.log(data);
   htmlAddEggs(easterEggs);
 }
 
 function socketPlayerJoined(data){
+  console.log(data);
   players = data.players;
   $('#board tr').remove();
   htmlAddBoard();
-  console.log(data);
   htmlAddPlayers(data);
 }
 
 function socketPlayerDrinkPotion(data){
-  console.log(data);
+  // console.log(data);
   players = data.players;
   $('#board tr').remove();
   htmlAddBoard();
@@ -129,12 +129,18 @@ function htmlAddBoard() {
 }
 
 function htmlAddPlayers(data){
-
   for(var i = 0; i < data.players.length; i++){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
       $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name);
     }
+  }
+
+  var user = _.find(players, function(p){return p.name === player});
+
+  for(var x = 0; x < user.health; x++){
+    var $health = $('<div>').addClass('health');
+    $('#hp-status').append($health);
   }
 
     // if(data.players[i].isZombie){
