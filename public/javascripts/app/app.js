@@ -95,7 +95,7 @@ function initializeSocketIO(){
 function socketConnected(data){
   console.log(data);
 }
-function socketEggssReady(data){
+function socketEggsReady(data){
   easterEggs = data.easterEggs;
   console.log(data);
   htmlAddPotions(easterEggs);
@@ -153,8 +153,21 @@ function htmlAddPlayers(data){
 
 function htmlAddPotions(easterEggs) {
   $('#board td').removeClass('potion');
+  $('#board td').removeClass('attack');
+  $('#board td').removeClass('quicksand');
   for(var i = 0; i < easterEggs.length; i++){
     var $td = $('#board td[data-x="' + easterEggs[i].x + '"][data-y="' + easterEggs[i].y + '"]');
-    $td.addClass('potion');
+    if (easterEggs[i].type === 'potion') {
+      $td.addClass('potion');
+    }
+
+      if (easterEggs[i].type === 'attack') {
+        $td.addClass('attack');
+    }
+
+        if (easterEggs[i].type === 'quicksand') {
+          $td.addClass('quicksand');
+    }
+
   }
 }

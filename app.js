@@ -36,7 +36,9 @@ setInterval(function(){
       var egg = {};
       egg.x = __.sample(__.range(10));
       egg.y = __.sample(__.range(10));
-      // egg.healthBoost = __.sample(__.range(1,101));
+      egg.type = __.sample(['attack', 'potion', 'quicksand']);
+
+      egg.healthBoost = __.sample(__.range(1,101));
 
       easterEggs.push(egg);
     }
