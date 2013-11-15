@@ -111,6 +111,7 @@ function socketPlayerJoined(data){
 }
 
 function socketPlayerDrinkPotion(data){
+  console.log(data);
   players = data.players;
   $('#board tr').remove();
   htmlAddBoard();
@@ -157,8 +158,21 @@ function htmlAddPlayers(data){
 
 function htmlAddEggs(easterEggs) {
   $('#board td').removeClass('potion');
+  $('#board td').removeClass('attack');
+  $('#board td').removeClass('quicksand');
   for(var i = 0; i < easterEggs.length; i++){
     var $td = $('#board td[data-x="' + easterEggs[i].x + '"][data-y="' + easterEggs[i].y + '"]');
-    $td.addClass('potion');
+    if (easterEggs[i].type === 'potion') {
+      $td.addClass('potion');
+    }
+
+      if (easterEggs[i].type === 'attack') {
+        $td.addClass('attack');
+    }
+
+        if (easterEggs[i].type === 'quicksand') {
+          $td.addClass('quicksand');
+    }
+
   }
 }
