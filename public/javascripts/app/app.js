@@ -132,7 +132,10 @@ function htmlAddPlayers(data){
   for(var i = 0; i < data.players.length; i++){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
-      $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name);
+      if(data.players[i].character === 'Santa Claus'){
+        $td.addClass('santa').attr('data-name', data.players[i].name);
+      }
+
     }
   }
 
