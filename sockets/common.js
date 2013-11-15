@@ -39,7 +39,7 @@ function socketPlayerMoved(data){
     function(fn){m.findPlayer(data.player,fn);},
     function(player,fn){m.updateCoordinates(player,data.x,data.y,fn);},
     function(player,fn){m.findGame(data.game,fn);},
-    function(game,fn){m.emitPlayers(io.sockets,game.players,fn);}
+    function(game,fn){m.emitPlayers(io.sockets,game.players, null, fn);}
   ]); // given an array of functions that are run in order.
   // always run fn in the function, which will then call the next function.
 }
@@ -54,7 +54,7 @@ function socketAttack(data){
     function(fn){m.findPlayer(data.attacker,fn);},
     function(player,fn){m.updateHealth(storage.player, player, fn);},
     function(player,fn){m.findGame(data.game,fn);},
-    function(game,fn){m.emitPlayers(io.sockets,game.players,fn);}
+    function(game,fn){m.emitPlayers(io.sockets,game.players, null, fn);}
   ]);
 }
 
@@ -64,7 +64,7 @@ function socketPlayerDrinkPotion(data){
     function(fn){m.findPlayer(data.player,fn);},
     function(player,fn){m.drinkPotion(player, data.potion, fn);},
     function(player,fn){m.findGame(data.game,fn);},
-    function(game,fn){m.emitPlayers(io.sockets,game.players,fn);}
+    function(game,fn){m.emitPlayers(io.sockets,game.players, null, fn);}
   ]);
 }
 
@@ -73,7 +73,7 @@ function socketRemovePotion(data){
     function(fn){m.findGame(data.game,fn);},
     function(game,fn){m.removePotion(game, data.potion, fn)},
     function(player,fn){m.findGame(data.game,fn);},
-    function(game,fn){m.emitPlayers(io.sockets,game.players,fn);}
+    function(game,fn){m.emitPlayers(io.sockets,game.players, null, fn);}
   ]);
 }
 
