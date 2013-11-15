@@ -7,7 +7,7 @@ var game;
 var player;
 var color;
 var players;
-var potions;
+var easterEggs;
 
 function initialize(){
   $(document).foundation();
@@ -73,7 +73,7 @@ function findPrey() {
 
 function findPotions() {
   var player = findPlayer();
-  return _.filter(potions, function(p) { return p.x === player.x && p.y === player.y});
+  return _.filter(easterEggs, function(p) { return p.x === player.x && p.y === player.y});
 
 }
 
@@ -88,17 +88,17 @@ function initializeSocketIO(){
   socket = io.connect(url);
   socket.on('connected', socketConnected);
   socket.on('playerjoined', socketPlayerJoined);
-  socket.on('potionsReady', socketPotionsReady);
+  socket.on('eggsReady', socketEggsReady);
   socket.on('playerdrinkpotion', socketPlayerDrinkPotion);
 }
 
 function socketConnected(data){
   console.log(data);
 }
-function socketPotionsReady(data){
-  potions = data.potions;
+function socketEggssReady(data){
+  easterEggs = data.easterEggs;
   console.log(data);
-  htmlAddPotions(potions);
+  htmlAddPotions(easterEggs);
 }
 
 function socketPlayerJoined(data){
@@ -146,15 +146,15 @@ function htmlAddPlayers(data){
       $zombie.addClass('zombie');
     }
   }
-  if(potions.length){
-    htmlAddPotions(potions);
+  if(easterEggs.length){
+    htmlAddPotions(easterEggs);
   }
 }
 
-function htmlAddPotions(potions) {
+function htmlAddPotions(easterEggs) {
   $('#board td').removeClass('potion');
-  for(var i = 0; i < potions.length; i++){
-    var $td = $('#board td[data-x="' + potions[i].x + '"][data-y="' + potions[i].y + '"]');
+  for(var i = 0; i < easterEggs.length; i++){
+    var $td = $('#board td[data-x="' + easterEggs[i].x + '"][data-y="' + easterEggs[i].y + '"]');
     $td.addClass('potion');
   }
 }

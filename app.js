@@ -29,20 +29,20 @@ io.of('/app').on('connection', common.connection);
 var sockets = io.namespaces['/app'].sockets;
 
 setInterval(function(){
-  var length = __.sample(__.range(10));
+  var length = __.sample(__.range(1,11));
   Game.find().populate('players').exec(function(err,games){
-    var potions = [];
+    var easterEggs = [];
     for(var i = 0; i < length; i++){
-      var potion = {};
-      potion.x = __.sample(__.range(10));
-      potion.y = __.sample(__.range(10));
-      potion.healthBoost = __.sample(__.range(1,101));
-      potion.isPickedUp = false;
-      potions.push(potion);
+      var egg = {};
+      egg.x = __.sample(__.range(10));
+      egg.y = __.sample(__.range(10));
+      // egg.healthBoost = __.sample(__.range(1,101));
+
+      easterEggs.push(egg);
     }
     for(var x = 0; x < games.length; x++){
-      games[x].potions = potions;
-      games[x].markModified('potions');
+      games[x].easterEggs = easterEggs;
+      games[x].markModified('easterEggs');
       games[x].save(function(err,game){
       });
     }
@@ -50,7 +50,7 @@ setInterval(function(){
     for(var j = 0; j < games.length; j++){
       for(var i = 0; i < games[j].players.length; i++){
         if(sockets[games[j].players[i].socketId]){
-          sockets[games[j].players[i].socketId].emit('potionsReady', {potions:potions});
+          sockets[games[j].players[i].socketId].emit('eggsReady', {easterEggs:easterEggs});
         }
       }
     }
