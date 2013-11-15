@@ -92,12 +92,12 @@ function initializeSocketIO(){
 }
 
 function socketConnected(data){
-  // console.log(data);
+  console.log(data);
 }
 
 function socketEggsReady(data){
+  console.log(data);
   easterEggs = data.easterEggs;
-  // console.log(data);
   htmlAddEggs(easterEggs);
 }
 
@@ -130,7 +130,7 @@ function htmlAddBoard() {
 }
 
 function htmlAddPlayers(data){
-  debugger;
+
   for(var i = 0; i < data.players.length; i++){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');

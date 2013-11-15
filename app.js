@@ -31,6 +31,7 @@ var sockets = io.namespaces['/app'].sockets;
 setInterval(function(){
   var length = __.sample(__.range(1,11));
   Game.find().populate('players').exec(function(err,games){
+
     var easterEggs = [];
     for(var i = 0; i < length; i++){
       var egg = {};
@@ -52,6 +53,7 @@ setInterval(function(){
 
       easterEggs.push(egg);
     }
+
     for(var x = 0; x < games.length; x++){
       games[x].easterEggs = easterEggs;
       games[x].markModified('easterEggs');
@@ -59,12 +61,21 @@ setInterval(function(){
       });
     }
 
+    console.log('---interval---');
+
+    // console.log(games);
+
     for(var j = 0; j < games.length; j++){
       for(var i = 0; i < games[j].players.length; i++){
         if(sockets[games[j].players[i].socketId]){
+          console.log(easterEggs);
           sockets[games[j].players[i].socketId].emit('eggsReady', {easterEggs:easterEggs});
         }
       }
     }
+
+
+
+
   });
-},30000);
+},15000);
