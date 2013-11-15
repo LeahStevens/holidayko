@@ -135,7 +135,9 @@ function htmlAddPlayers(data){
       if(data.players[i].character === 'Santa Claus'){
         $td.addClass('santa').attr('data-name', data.players[i].name);
       }
-
+      if(data.players[i].character === 'Cupid'){
+        $td.addClass('cupid').attr('data-name', data.players[i].name);
+      }
     }
   }
 
