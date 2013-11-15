@@ -98,7 +98,7 @@ function socketConnected(data){
 function socketEggssReady(data){
   easterEggs = data.easterEggs;
   console.log(data);
-  htmlAddPotions(easterEggs);
+  htmlAddEggs(easterEggs);
 }
 
 function socketPlayerJoined(data){
@@ -134,9 +134,9 @@ function htmlAddPlayers(data){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
       var $health = $('<div>').addClass('health');
-      $health.css('background-color', data.players[i].color);
       $health.css('width', data.players[i].health + '%');
-      $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name).prepend($health);
+      $td.addClass('snowball').attr('data-name', data.players[i].name).text(data.players[i].name);
+      $('#hp-status').append($health);
     }
     if(data.players[i].isZombie){
       var $zombie = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
@@ -151,7 +151,7 @@ function htmlAddPlayers(data){
   }
 }
 
-function htmlAddPotions(easterEggs) {
+function htmlAddEggs(easterEggs) {
   $('#board td').removeClass('potion');
   for(var i = 0; i < easterEggs.length; i++){
     var $td = $('#board td[data-x="' + easterEggs[i].x + '"][data-y="' + easterEggs[i].y + '"]');
