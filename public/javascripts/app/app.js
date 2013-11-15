@@ -55,6 +55,25 @@ function clickStart(){
   player = getValue('#player');
   socket.emit('startgame', {game:game, player:player, character:character});
   htmlAddBoard();
+  if(game === 'Christmas Town') {
+    $('body').css('background', 'url(../images/christmasbackground2.jpg)').css('background-repeat', 'no-repeat').css('background-size', 'cover');
+  }
+  if(game === "St Patrick's Pub") {
+    $('body').css('background', 'url(../images/stpattybackground1.gif)').css('background-repeat', 'no-repeat').css('background-size', 'cover');
+  }
+  if(game === "Cupid's Love Shack") {
+    $('body').css('background', 'url(../images/valentinebackground.jpg)').css('background-repeat', 'no-repeat').css('background-size', 'cover');
+  }
+  if(game === 'Easter Land') {
+    $('body').css('background', 'url(../images/easterbackground1.jpg)').css('background-repeat', 'no-repeat').css('background-size', 'cover');
+  }
+  if(game === 'Halloween Town') {
+    $('body').css('background', 'url(../images/halloweenbackground2.jpeg)').css('background-repeat', 'no-repeat').css('background-size', 'cover');
+  }
+  if(game === "Uncle Sam's Lair") {
+    $('body').css('background', 'url(../images/whitehouse.jpg)').css('background-repeat', 'no-repeat').css('background-size', 'cover');
+  }
+
 }
 
 // ------------------------------------------------------------------------ //
