@@ -170,6 +170,14 @@ $('#hp-status div').remove();
       if(data.players[i].character === 'Uncle Sam'){
         $td.addClass('sam').attr('data-name', data.players[i].name);
       }
+      if($td.hasClass('attack')){
+        var $div = $('<div>').addClass('attack').addClass('egg');
+        $('#easter-egg').append($div);
+      }
+      if($td.hasClass('potion')){
+        var $div = $('<div>').addClass('potion').addClass('egg');
+        $('#easter-egg').append($div);
+      }
     }
   }
 
