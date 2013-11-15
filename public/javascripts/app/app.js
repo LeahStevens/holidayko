@@ -129,7 +129,7 @@ function htmlAddBoard() {
 }
 
 function htmlAddPlayers(data){
-
+$('#hp-status div').remove();
   for(var i = 0; i < data.players.length; i++){
     if(data.players[i].health > 0){
       var $td = $('#board td[data-x="' + data.players[i].x + '"][data-y="' + data.players[i].y + '"]');
