@@ -51,10 +51,10 @@ function keyupMove(e){
 
 function clickStart(){
   $('#board tr').remove();
-  game = getValue('#game');
+  game = $('#worlds :selected').text();
+  character = $('#characters :selected').text();
   player = getValue('#player');
-  color = getValue('#color');
-  socket.emit('startgame', {game:game, player:player, color:color});
+  socket.emit('startgame', {game:game, player:player, character:character});
   htmlAddBoard();
 }
 
@@ -95,7 +95,8 @@ function initializeSocketIO(){
 function socketConnected(data){
   console.log(data);
 }
-function socketEggssReady(data){
+
+function socketEggsReady(data){
   easterEggs = data.easterEggs;
   console.log(data);
   htmlAddEggs(easterEggs);

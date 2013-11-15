@@ -3,14 +3,26 @@ extends ../template/layout
 block content
   .row
     small-12.columns
-      h1 Snowball Fight!
+      h1 HolidayKO
   .row
     .small-2.columns
-      input#game(type='text', name='game')
+      select#characters
+        option(value='santa') Santa Claus
+        option(value='leprechaun') Leprechaun
+        option(value='cupid') Cupid
+        option(value='easter') Easter Bunny
+        option(value='halloween') Jack O Lantern
+        option(value='july') Uncle Sam
     .small-2.columns
-      input#player(type='text', name='player')
+      input#player(type='text', name='player', placeholder='Username')
     .small-2.columns
-      input#color(type='text', name='color')
+      select#worlds
+        option(value='christmas') Christmas Town
+        option(value='stpatty') St Patrick's Pub
+        option(value='valentines') Cupid's Love Shack
+        option(value='easterland') Easter Land
+        option(value='halloweentown') Halloween Town
+        option(value='fourthofjuly') Uncle Sam's Lair
     .small-2.columns
       button#start Start
     .small-4.columns
